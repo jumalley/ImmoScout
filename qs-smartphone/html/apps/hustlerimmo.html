@@ -1,0 +1,171 @@
+<div class="custom-content">
+    <div class="custom-header">
+        <img class="custom-header-photo"src="./img/custom/hustler_immo.png"></img>
+    </div>
+    <div id="houses-contentt"></div>
+    <div id="owned-contentt"></div>
+    <div class="custom-footer">
+        <div id="all-houses">
+            <img id="all-houses-img" style="width: 45px;height: 45px;color:rgba(45, 45, 111, 0.8);" src="./img/custom/houses-icon.svg"/>
+            <p>Houses</p>
+        </div>
+        <div id="owned-houses">
+            <img style="width: 45px;height: 45px;" src="./img/custom/owned-icon.svg"/>
+            <p>Owned</p>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).on('click', '.custom-button', function(e) {
+    let overid = $(this).attr("houseid")
+	QS.Phone.Notifications.Add("./img/apps/example.png", "ImmoScout24", 'GPS updated!')
+    $.post('https://qs-smartphone/setHousePosition', JSON.stringify({
+        label: overid,
+    }))
+})
+
+$(document).on('click', '#owned-houses', function(e) {
+    $('#owned-contentt').show();
+    $('#houses-contentt').hide();
+})
+
+$(document).on('click', '#all-houses', function(e) {
+    $('#owned-contentt').hide();
+    $('#houses-contentt').show();
+})
+
+</script>
+
+<style>
+
+.nopadding-nomargin{
+    margin: 0 0 0 5px;
+    padding: 0;
+    
+}
+.svg-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#houses-contentt{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 65%;
+}
+
+#owned-contentt{
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 65%;
+}
+
+
+.custom-content {
+    font-family: "ios";
+	height: 108%;
+	width: 100%;
+	background: rgb(255, 255, 255);
+	overflow: hidden;
+}
+
+.custom-header {
+    position: relative;
+	height: 100px;
+	width: 100%;
+	background: rgb(226, 226, 226);
+	border-bottom: 1px solid rgb(199 199 199);
+}
+
+.custom-header-photo{
+    position: absolute;
+    width: 33%;
+    left: 33%;
+    bottom: 5px;
+}
+
+.custom-header > p {
+    position: relative;
+	font-size: 20px;
+    top: 30px;
+    left: 85px;
+    padding: 10px;
+    font-family: Lato, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.custom-box {
+    display: flex;
+    padding-bottom: 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    margin-bottom: 15px;
+	height: auto;
+	width: 280px;
+	top: 20px;
+	left: 6px;
+	border-radius: 10px;
+	background-color: rgb(226, 226, 226);
+
+}
+
+.custom-box > p {
+    position: relative;
+	font-size: 18px;
+    top: 5px;
+    padding: 20px;
+    font-family: Lato, Helvetica, sans-serif;
+}
+
+.custom-button {
+    position: absolute;
+	height: 40px;
+    width: 40px;
+    top: 0;
+	right: 0;
+	border-radius: 10px;
+    z-index: 10000000;
+	background-color: rgb(146 177 127);
+    cursor: pointer;
+}
+
+.custom-button:hover {
+	background-color: rgb(143 199 108);
+}
+
+.custom-button > p {
+    position: relative;
+	font-size: 18px;
+    top: 7px;
+    left: 85px;
+    color: white;
+    font-family: Lato, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.custom-footer{
+    display: flex;
+    position: relative;
+	height: 100px;
+	width: 100%;
+	background: rgb(226, 226, 226);
+	border-bottom: 1px solid rgb(199 199 199);
+}
+
+#all-houses{
+    position: absolute;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+#owned-houses{
+    position: absolute;
+    right: 20%;
+    display: flex;
+    flex-direction: column;
+}
+</style>
