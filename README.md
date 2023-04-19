@@ -2,6 +2,10 @@
 
 ESX and QS-housing fork from Ju.
 
+# Original author.
+
+https://github.com/Terrakx/ImmoScout-qs-smartphone
+
 <p>Preview (QBCORE): https://streamable.com/4camzi</p>
 
 <p>All data is pulled from houselocations and player_houses table. <b>You still need to create the houses with qb-houses.</b></p>
